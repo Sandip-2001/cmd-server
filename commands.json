@@ -1,0 +1,44 @@
+{
+  "git": {
+    "prompt": "Which Git command category do you need?",
+    "choices": {
+      "Setup & Init": [
+        "git config --global user.name \"[firstname lastname]\"",
+        "git config --global user.email \"[valid-email]\"",
+        "git init",
+        "git clone [url]"
+      ],
+      "Stage & Snapshot": [
+        "git status",
+        "git add [file]",
+        "git diff",
+        "git commit -m \"[descriptive message]\""
+      ],
+      "Branch & Merge": [
+        "git branch [branch-name]",
+        "git checkout",
+        "git merge [branch]"
+      ],
+      "Share & Update": [
+        "git fetch [alias]",
+        "git pull",
+        "git push [alias] [branch]"
+      ]
+    }
+  },
+  "python": {
+    "prompt": "Which Operating System are you using for Python?",
+    "choices": {
+      "Mac/Linux": ["python3 -m venv venv", "source venv/bin/activate"],
+      "Windows": ["python -m venv venv", "venv\\Scripts\\activate"]
+    }
+  },
+  "c": {
+    "prompt": "Which Operating System are you using to compile C?",
+    "choices": {
+      "Mac/Linux": ["gcc program.c -o program", "./program"],
+      "Windows": ["gcc program.c -o program.exe", "program.exe"]
+    }
+  },
+  "git-sync": ["git fetch", "git status", "git pull"]
+}
