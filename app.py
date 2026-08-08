@@ -51,7 +51,7 @@ def get_command():
         script += '    "Cancel" )\n      echo "Aborted."; break;;\n'
         script += '    * )\n      echo -e "\\033[1;31mInvalid option. Try again.\\033[0m";;\n'
         script += '  esac\n'
-        script += 'done\n'
+        script += 'done < /dev/tty\n'
 
     # SCENARIO B: It's a standard sequence of commands (List)
     elif isinstance(data, list):
