@@ -2,27 +2,123 @@
   "git": {
     "prompt": "Which Git command category do you need?",
     "choices": {
-      "Setup & Init": [
+      "Setup": [
+        "# set a name that is identifiable for credit when review version history[cite: 3]",
         "git config --global user.name \"[firstname lastname]\"",
+        "",
+        "# set an email address that will be associated with each history marker[cite: 3]",
         "git config --global user.email \"[valid-email]\"",
+        "",
+        "# set automatic command line coloring for Git for easy reviewing[cite: 3]",
+        "git config --global color.ui auto"
+      ],
+      "Setup & Init": [
+        "# initialize an existing directory as a Git repository[cite: 3]",
         "git init",
+        "",
+        "# retrieve an entire repository from a hosted location via URL[cite: 3]",
         "git clone [url]"
       ],
       "Stage & Snapshot": [
+        "# show modified files in working directory, staged for your next commit[cite: 3]",
         "git status",
+        "",
+        "# add a file as it looks now to your next commit (stage)[cite: 3]",
         "git add [file]",
+        "",
+        "# unstage a file while retaining the changes in working directory[cite: 3]",
+        "git reset [file]",
+        "",
+        "# diff of what is changed but not staged[cite: 3]",
         "git diff",
+        "",
+        "# diff of what is staged but not yet committed[cite: 3]",
+        "git diff-staged",
+        "",
+        "# commit your staged content as a new commit snapshot[cite: 3]",
         "git commit -m \"[descriptive message]\""
       ],
       "Branch & Merge": [
+        "# list your branches. a * will appear next to the currently active branch[cite: 3]",
+        "git branch",
+        "",
+        "# create a new branch at the current commit[cite: 3]",
         "git branch [branch-name]",
+        "",
+        "# switch to another branch and check it out into your working directory[cite: 3]",
         "git checkout",
-        "git merge [branch]"
+        "",
+        "# merge the specified branch's history into the current one[cite: 3]",
+        "git merge [branch]",
+        "",
+        "# show all commits in the current branch's history[cite: 3]",
+        "git log"
+      ],
+      "Inspect & Compare": [
+        "# show the commit history for the currently active branch[cite: 3]",
+        "git log",
+        "",
+        "# show the commits on branchA that are not on branchB[cite: 3]",
+        "git log branchB..branchA",
+        "",
+        "# show the commits that changed file, even across renames[cite: 3]",
+        "git log-follow [file]",
+        "",
+        "# show the diff of what is in branchA that is not in branchB[cite: 3]",
+        "git diff branchB...branchA",
+        "",
+        "# show any object in Git in human-readable format[cite: 3]",
+        "git show [SHA]"
+      ],
+      "Tracking Path Changes": [
+        "# delete the file from project and stage the removal for commit[cite: 3]",
+        "git rm [file]",
+        "",
+        "# change an existing file path and stage the move[cite: 3]",
+        "git mv [existing-path] [new-path]",
+        "",
+        "# show all commit logs with indication of any paths that moved[cite: 3]",
+        "git log--stat -M"
+      ],
+      "Ignoring Patterns": [
+        "# system wide ignore pattern for all local repositories[cite: 3]",
+        "git config --global core.excludesfile [file]"
       ],
       "Share & Update": [
+        "# add a git URL as an alias[cite: 3]",
+        "git remote add [alias] [url]",
+        "",
+        "# fetch down all the branches from that Git remote[cite: 3]",
         "git fetch [alias]",
-        "git pull",
-        "git push [alias] [branch]"
+        "",
+        "# merge a remote branch into your current branch to bring it up to date[cite: 3]",
+        "git merge [alias]/[branch]",
+        "",
+        "# Transmit local branch commits to the remote repository branch[cite: 3]",
+        "git push [alias] [branch]",
+        "",
+        "# fetch and merge any commits from the tracking remote branch[cite: 3]",
+        "git pull"
+      ],
+      "Rewrite History": [
+        "# apply any commits of current branch ahead of specified one[cite: 3]",
+        "git rebase [branch]",
+        "",
+        "# clear staging area, rewrite working tree from specified commit[cite: 3]",
+        "git reset --hard [commit]"
+      ],
+      "Temporary Commits": [
+        "# Save modified and staged changes[cite: 3]",
+        "git stash",
+        "",
+        "# list stack-order of stashed file changes[cite: 3]",
+        "git stash list",
+        "",
+        "# write working from top of stash stack[cite: 3]",
+        "git stash pop",
+        "",
+        "# discard the changes from top of stash stack[cite: 3]",
+        "git stash drop"
       ]
     }
   },
