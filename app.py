@@ -42,10 +42,22 @@ def get_command():
         for choice_name, commands in choices.items():
             script += f'    "{choice_name}" )\n'
             script += f'      echo -e "\\n\\033[1;32mRun these commands:\\033[0m"\n'
+            
             for cmd in commands:
-                # Escape internal quotes so they don't break the bash echo
                 escaped_cmd = cmd.replace('"', '\\"')
-                script += f'      echo "  > {escaped_cmd}"\n'
+                
+                # --- FORMATTING LOGIC START ---
+                if not escaped_cmd.strip():
+                    # It's an empty line
+                    script += '      echo ""\n'
+                elif escaped_cmd.strip().startswith('#'):
+                    # It's a description/comment (printed in dim grey, no '>')
+                    script += f'      echo -e "  \\033[90m{escaped_cmd}\\033[0m"\n'
+                else:
+                    # It's an executable command
+                    script += f'      echo "  > {escaped_cmd}"\n'
+                # --- FORMATTING LOGIC END ---
+                
             script += '      break;;\n'
             
         script += '    "Cancel" )\n      echo "Aborted."; break;;\n'
@@ -57,8 +69,16 @@ def get_command():
     elif isinstance(data, list):
         script += f'echo -e "\\n\\033[1;32mRun these commands in order:\\033[0m"\n'
         for cmd in data:
-             escaped_cmd = cmd.replace('"', '\\"')
-             script += f'echo "  > {escaped_cmd}"\n'
+            escaped_cmd = cmd.replace('"', '\\"')
+            
+            # --- FORMATTING LOGIC START ---
+            if not escaped_cmd.strip():
+                script += 'echo ""\n'
+            elif escaped_cmd.strip().startswith('#'):
+                script += f'echo -e "  \\033[90m{escaped_cmd}\\033[0m"\n'
+            else:
+                script += f'echo "  > {escaped_cmd}"\n'
+            # --- FORMATTING LOGIC END ---
 
     return script, 200, {'Content-Type': 'text/plain'}
 
